@@ -7,6 +7,7 @@ public class Simulation {
     private int[] bins;
 
     public Simulation(int size, int numOfBins) {
+        /* Initializes and populates the array */
         array = new ArrayList<Double>();
         generateNormalRandomNumbers(size);
         bins = makeBins(numOfBins);
@@ -45,6 +46,7 @@ public class Simulation {
         return Collections.max(array); /* Returns max of array */
     }
 
+    /* Calculates the maximum value in bins */
     public int getBinMax() {
         int max = bins[0];
         for(int b : bins) {
