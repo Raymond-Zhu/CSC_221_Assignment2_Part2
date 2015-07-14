@@ -79,10 +79,18 @@ public class Histogram extends JPanel {
         g.setColor(Color.BLUE);
 
         DecimalFormat formatter = new DecimalFormat("#,###");
-        //TODO
+        int x = LEFT_MARGIN + binWidth;
+        int y = getHeight() - BOTTOM_MARGIN;
+        for(int b : bins) {
+            String label = formatter.format(b);
+            y -= (int)scaleY(b);
+            g.drawString(label,x + binWidth/3,y - 5);
+            x += binWidth;
+            y = getHeight() - BOTTOM_MARGIN;
+        }
     }
     private double scaleY(int value) {
         double scale = (double)(getHeight() - (TOP_MARGIN + BOTTOM_MARGIN))/ binMax;
-        return (value * scale) - 20;
+        return (value * scale) ;
     }
 }

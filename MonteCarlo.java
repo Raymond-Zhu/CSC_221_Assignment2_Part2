@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class MonteCarlo {
     public static void main(String[] args) {
-        Simulation sim = new Simulation(10000,10);
+        Simulation sim = new Simulation(100000,10);
         Histogram h = new Histogram(sim);
         JFrame visuals = new JFrame();
 
