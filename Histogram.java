@@ -21,7 +21,8 @@ public class Histogram extends JPanel {
         binSize = s.getRange() / bins.length;   /* Calculates the range of the bins */
         binMax = (double)s.getBinMax();         /* Finds the maximum value in the bins */
         min = s.getMin();                       /* Finds the minimum value of the data */
-        binWidth = (1200 / bins.length);        /* 1200 is the width of the graph */
+        binWidth = (1160 / (bins.length+1));        /* 1200 is the width of the graph */
+
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -70,7 +71,7 @@ public class Histogram extends JPanel {
         String label = formatter.format(labelVal);
         int x = LEFT_MARGIN;
         int y = getHeight() - BOTTOM_MARGIN +12;
-        for(int b : bins) {
+        for(int i = 0; i < (bins.length+1); i++) {
             g.drawString(label,x-12,y);
             x += binWidth;
             labelVal += binSize;
