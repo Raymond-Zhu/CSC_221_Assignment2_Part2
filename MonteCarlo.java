@@ -8,8 +8,27 @@ public class MonteCarlo {
 	 * Creates a Histogram of Normally Distributed Random Numbers */
     public static void main(String[] args) {
         
+    	/* Final Variables */
+    	
+    	// Number of random numbers
+    	final int NUMBER_OF_RANDNUMS = 100000;
+    	
+    	// Number of bins
+    	final int NUMBER_OF_BINS = 10;
+    	
+    	// JFRAME dimensions
+    	final int JFRAME_WIDTH = 1200;
+    	final int JFRAME_HEIGHT = 800;
+    	
+    	
     	// Create a simulation object to generate random numbers
-    	Simulation sim = new Simulation(100000,10);
+    	Simulation sim = new Simulation();
+    	
+    	// Generate Normally distributed Random Numbers
+    	sim.generateNormalRandomNumbers(NUMBER_OF_RANDNUMS);
+    	
+    	// Separate random numbers into bins
+    	sim.makeBins(NUMBER_OF_BINS);
     	
     	// Create a Histogram Object and pass the simulation object as parameter
         Histogram h = new Histogram(sim);
@@ -27,7 +46,7 @@ public class MonteCarlo {
         visuals.add(h);
         
         // Set the size
-        visuals.setSize(1200,800);
+        visuals.setSize(JFRAME_WIDTH,JFRAME_HEIGHT);
         
         // Make the JFrame window visible
         visuals.setVisible(true);

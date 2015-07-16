@@ -12,16 +12,8 @@ public class Simulation {
     // Frequency bin array
     private int[] bins;
 
-    /* Creates Random numbers and organizes them into bins
-     * Class's Constructor */
-    public Simulation(int size, int numOfBins) {
-        // Initializes and populates the array
-        array = new ArrayList<Double>();
-        generateNormalRandomNumbers(size);
-        
-        // Makes bins from the array
-        bins = makeBins(numOfBins);
-    }
+    /* Class uses Default Constructor */
+
     
     /* Getter Method for array of random numbers */
     public ArrayList<Double> getArray() {
@@ -35,7 +27,11 @@ public class Simulation {
 
     /* Generates the normally distributed random numbers to populate the array*/
     public void generateNormalRandomNumbers(int size) {
-        // Initializes a new Random class 
+        
+    	// Initializes the array of random numbers
+        array = new ArrayList<Double>(size);
+    	
+    	// Initializes a new Random class 
         Random rand = new Random();
 
         // Fills array list with random numbers 
@@ -46,11 +42,11 @@ public class Simulation {
     }
     
     /* Sorts the random array into bins */
-    public int[] makeBins(int numOfBins) {
-    	
-    	// Array for holding count of numbers belonging in the bin
-        int [] bins = new int[numOfBins]; 
+    public void makeBins(int numOfBins) { 
         
+    	// Initializes array for holding count of numbers belonging in each bin
+        bins = new int[numOfBins];
+    	
         // Gets minimum value of the array
         final double min = getMin(); 
         
@@ -67,9 +63,7 @@ public class Simulation {
            bins[getBin(d,min,max,range)]++; 
            
         }
-        
-        // Return frequency bin array
-        return bins;
+
     }
 
     /* Returns max of array */
